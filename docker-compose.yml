@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
   neo4j:
     image: 'neo4j'
