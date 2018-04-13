@@ -1,0 +1,14 @@
+[
+{
+	"name": "uppsalauniversity",
+	"url" : "www.uu.se",
+	"tags": ["course","teachers","credits"],
+	"desc": "best university lol"
+},
+{
+	"name": "airport",
+	"url" : "www.duckduckgo.com",
+	"tags": ["co2","flights","departures","tickets","gates"],
+	"desc": "an airport needs what an airport needs"
+}
+]
