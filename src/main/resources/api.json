@@ -1,27 +1,120 @@
 [
   {
     "name": "Trafiklab",
-    "url": "trafiklab.se/api",
+    "url": "http://trafiklab.se/api",
     "tags": [
-      "transport", "bus", "metro", "train", "traffic", "geo"
+      "transport", "bus", "metro", "train", "traffic", "geo", "location", "path", "pathfinding", "way", "commute"
     ],
+    "desc": "Open APIs for all public transport in Sweden",
     "lang": "swedish",
     "type": [
       "csv", "xml"
     ]
   },
   {
-    "name": "SLU",
-    "url": "www.slu.se/ufi",
+    "name": "SLU National Forest Inventory",
+    "url": "http://www.slu.se/nfi",
     "tags": [
-      "agriculture", "geo", "statistics", "forrest"
+      "agriculture", "geo", "statistics", "forest"
+    ],
+    "desc": "Official agricultural statistics about the status and change in Sweden's forests"
+  },
+  {
+    "name": "Police Data (Polisens Öppna Data)",
+    "url": "https://oppnadata.se/datamangder/#esc_org=https%3A%2F%2Ffree.entryscape.com%2Fstore%2F190%2Fresource%2F1",
+    "tags": [
+      "geo", "accidents", "terrorism", "catastrophy", "police", "address", "location"
+    ],
+    "desc": "Information about police stations, addresses and opening times"
+  },
+  {
+    "name": "Statistika Centralbyrån",
+    "url": "http://scb.se",
+    "tags": [
+      "statistics", "agriculture", "forestry", "fishery", "business", "democracy", "education", "energy", "environment", "housing", "construction", "labour", "population", "construction", "trade", "transport", "communication"
+    ],
+    "desc": "Official data and statistics about the Swedish population, business, environment and more"
+  },
+  {
+    "name": "Open Data Portal (Öppna Data)",
+    "url": "http://oppnadata.se",
+    "tags": [
+      "environment", "economy", "finance", "food", "law", "legal", "population", "society", "transport", "education", "culture", "sport", "healthcare", "cities", "regions", "energy", "science", "technology", "agriculture", "forest"
+    ],
+    "desc": "Open data portal containing information and endpoints for accessing several public data pools about society, business, transport, economy and more"
+  },
+  {
+    "name": "SGU Geochemistry (Geokemi)",
+    "url": "http://sgu.se/produkter/geologiska-data/oppna-data/geokemi-oppna-data",
+    "tags": [
+      "geo", "geokemi", "nature", "metals", "chemistry", "geochemistry", "elements"
+    ],
+    "desc": "Collection of geochemical data, maps, minerals and statistics",
+    "lang": "swedish",
+    "type": [
+      "csv", "json"
     ]
   },
   {
-    "name": "Police",
-    "url": "polisen.se",
+    "name": "SGU Groundwater (Grundvatten)",
+    "url": "http://sgu.se/produkter/geologiska-data/oppna-data/grundvatten-oppna-data",
     "tags": [
-      "geo", "accidents", "terrorism", "catastrophy"
+      "geo", "water", "groundwater", "quality", "wells", "monitoring", "map"
+    ],
+    "desc": "Collection of data about the groundwater in Sweden including water quality, water levels and time series",
+    "lang": "swedish",
+    "type": [
+      "csv", "json"
+    ]
+  },
+  {
+    "name": "SGU Soils (Jordarter)",
+    "url": "http://sgu.se/produkter/geologiska-data/oppna-data/jordarter-oppna-data",
+    "tags": [
+      "geo", "soils", "soil", "ground", "land", "gravel", "sand", "energy", "minerals", "agriculture", "forest", "pollution", "analysis"
+    ],
+    "desc": "Collection of data about soil types and their occurrences in Sweden",
+    "lang": "swedish",
+    "type": [
+      "csv", "json"
+    ]
+  },
+  {
+    "name": "SGU Marine Geology (Maringeologi)",
+    "url": "http://sgu.se/produkter/geologiska-data/oppna-data/maringeologi-oppna-data",
+    "tags": [
+      "water", "sea", "coast", "marine", "seabed", "environment", "monitoring"
+    ],
+    "desc": "Collection of marine geology data with maps, minerals and statistics",
+    "lang": "swedish",
+    "type": [
+      "csv", "json"
+    ]
+  },
+  {
+    "name": "SGU Environment (Miljö)",
+    "url": "http://sgu.se/produkter/geologiska-data/oppna-data/maringeologi-oppna-data",
+    "tags": [
+      "environment", "monitoring", "groundwater", "trends", "sea", "coast", "impact"
+    ],
+    "desc": "Collection of environmental data representing SGU's working areas",
+    "lang": "swedish",
+    "type": [
+      "csv", "json"
+    ]
+  },
+  {
+    "name": "National Board of Health and Welfare",
+    "url": "http://sdb.socialstyrelsen.se/sdbapi.aspx",
+    "tags": [
+      "health", "welfare", "statistics", "population", "people", "wellbeing", "healthcare", "life"
+    ],
+    "desc": "Provides data about the Swedish health system and different statistics",
+    "lang": [
+      "swedish", "english"
+    ],
+    "type": [
+      "xml", "json"
     ]
   }
 ]

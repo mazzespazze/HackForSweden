@@ -1,7 +1,36 @@
+.filter input {
+    background-color: inherit;
+    border: none;
+    border-bottom: orangered solid 2px;
+    color: #AAA;
+    -webkit-animation: unfocused 0.25s;
+}
+
+.filter input:focus {
+    border-bottom: #c23502 solid 2px;
+    outline: none;
+    -webkit-animation: focused 0.25s;
+}
+
+@keyframes focused {
+    from {border-bottom: orangered solid 2px;}
+    to {border-bottom: #c23502 solid 2px;}
+}
+
+@keyframes unfocused {
+    from {border-bottom: #c23502 solid 2px;}
+    to {border-bottom: orangered solid 2px;}
+}
+
 .drawer {
     height: 100%;
     opacity: 1;
     -webkit-animation: fadein 1s;
+}
+
+.list {
+    max-height: 800px;
+    overflow: scroll;
 }
 
 .title {

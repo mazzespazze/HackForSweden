@@ -11,3 +11,7 @@ html,body,.container {
     from { opacity: 0; }
     to   { opacity: 1; }
 }
+
+::-webkit-scrollbar { 
+    display: none; 
+}
