@@ -1,6 +1,5 @@
 package se.bnpo.apiindex.model;
 
-import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
@@ -9,9 +8,6 @@ import org.neo4j.ogm.annotation.Property;
 public class Tag {
 
     @Id
-    @GeneratedValue
-    Long id;
-
     @Property(name="name")
     private String name;
 

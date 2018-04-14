@@ -7,15 +7,12 @@ import java.util.List;
 @NodeEntity(label = "api")
 public class API {
     @Id
-    @GeneratedValue
-    Long id;
-
     @Property(name="name")
     private String name;
     @Property(name="url")
     private String url;
 
-    @Relationship(type="Tag", direction=Relationship.OUTGOING)
+    @Relationship(type="Tag")
     private List<Tag> tags;
     @Property(name="desc")
     private String desc;
