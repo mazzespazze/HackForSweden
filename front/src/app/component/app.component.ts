@@ -11,6 +11,8 @@ export class AppComponent {
   private tags: string[];
   private connected: any[];
   private path: any[];
+
+  private selectedAPI: any;
   constructor(private service: IndexerService) {
     service.getTags().subscribe(res => this.tags = res);
   }
@@ -21,5 +23,15 @@ export class AppComponent {
   }
   private complete(item) {
     this.service.getPath(this.start, item.name).subscribe(res => this.path = res);
+  }
+
+  private deselectAPI(item) {
+    console.log("abort");
+    this.selectedAPI = null;
+  }
+
+  private selectAPI(item) {
+    console.log("Selected: " + item);
+    this.selectedAPI = item;
   }
 }

@@ -6,13 +6,15 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './component/app.component';
 import { DrawerComponent } from './component/drawer/drawer.component';
+import { ViewerComponent } from './component/viewer/viewer.component';
 
 import { IndexerService } from './service/indexer.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DrawerComponent
+    DrawerComponent,
+    ViewerComponent
   ],
   imports: [
     HttpModule, 

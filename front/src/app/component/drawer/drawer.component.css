@@ -1,8 +1,7 @@
 .drawer {
-    background-color: #192842;
     height: 100%;
-    -webkit-box-shadow: 5px 0 3px -2px #222;
-    box-shadow: 5px 0 3px -2px #222;
+    opacity: 1;
+    -webkit-animation: fadein 1s;
 }
 
 .title {
@@ -31,6 +30,11 @@
     background-color: #1c2d49;
 }
 
+.selected:hover {
+    background-color: #04ebb9;
+}
+
 .selected {
-    background-color: springgreen;
+    background-color: #00ffc8;
+    color: #444;
 }
