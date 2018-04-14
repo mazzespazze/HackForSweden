@@ -28,6 +28,11 @@
     -webkit-animation: fadein 1s;
 }
 
+.list {
+    max-height: 800px;
+    overflow: scroll;
+}
+
 .title {
     color: #AAA;
     font-weight: 900;

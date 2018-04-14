@@ -143,14 +143,14 @@ var AppComponent = /** @class */ (function () {
 /***/ "./src/app/component/drawer/drawer.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".drawer {\n    height: 100%;\n    opacity: 1;\n    -webkit-animation: fadein 1s;\n}\n\n.title {\n    color: #AAA;\n    font-weight: 900;\n    font-size: 32px;\n    letter-spacing: 5px;\n    font-family: 'Dejavu Sans';\n    margin: 10px;\n}\n\n.item {\n    color: #AAA;\n    font-weight: 600;\n    font-size: 18px;\n    letter-spacing: 3px;\n    font-family: 'Dejavu Sans';\n    width: 100%;\n    padding: 10px;\n    border-bottom: 2px solid white;\n    border-top: 2px solid white;\n    cursor: pointer;\n}\n\n.item:hover {\n    background-color: #1c2d49;\n}\n\n.selected:hover {\n    background-color: #04ebb9;\n}\n\n.selected {\n    background-color: #00ffc8;\n    color: #444;\n}"
+module.exports = ".filter input {\n    background-color: inherit;\n    border: none;\n    border-bottom: orangered solid 2px;\n    color: #AAA;\n    -webkit-animation: unfocused 0.25s;\n}\n\n.filter input:focus {\n    border-bottom: #c23502 solid 2px;\n    outline: none;\n    -webkit-animation: focused 0.25s;\n}\n\n@-webkit-keyframes focused {\n    from {border-bottom: orangered solid 2px;}\n    to {border-bottom: #c23502 solid 2px;}\n}\n\n@keyframes focused {\n    from {border-bottom: orangered solid 2px;}\n    to {border-bottom: #c23502 solid 2px;}\n}\n\n@-webkit-keyframes unfocused {\n    from {border-bottom: #c23502 solid 2px;}\n    to {border-bottom: orangered solid 2px;}\n}\n\n@keyframes unfocused {\n    from {border-bottom: #c23502 solid 2px;}\n    to {border-bottom: orangered solid 2px;}\n}\n\n.drawer {\n    height: 100%;\n    opacity: 1;\n    -webkit-animation: fadein 1s;\n}\n\n.list {\n    max-height: 800px;\n    overflow: scroll;\n}\n\n.title {\n    color: #AAA;\n    font-weight: 900;\n    font-size: 32px;\n    letter-spacing: 5px;\n    font-family: 'Dejavu Sans';\n    margin: 10px;\n}\n\n.item {\n    color: #AAA;\n    font-weight: 600;\n    font-size: 18px;\n    letter-spacing: 3px;\n    font-family: 'Dejavu Sans';\n    width: 100%;\n    padding: 10px;\n    border-bottom: 2px solid white;\n    border-top: 2px solid white;\n    cursor: pointer;\n}\n\n.item:hover {\n    background-color: #1c2d49;\n}\n\n.selected:hover {\n    background-color: #04ebb9;\n}\n\n.selected {\n    background-color: #00ffc8;\n    color: #444;\n}"
 
 /***/ }),
 
 /***/ "./src/app/component/drawer/drawer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"drawer\">\n    <div class=\"title\">\n        {{title}}\n    </div>\n    \n    <div class=\"item\" [ngClass]=\"{'item': true, 'selected': item.name === selected}\" *ngFor=\"let item of items\" (click)=\"clicked(item)\">\n        {{item.name}}\n    </div>\n</div>"
+module.exports = "<div class=\"drawer\">\n    <div class=\"title\">\n        {{title}}\n    </div>\n    <div class=\"filter\">\n        <input name=\"filter\" placeholder=\"filter\" [(ngModel)]=\"filter\"/>\n    </div>\n    <div class=\"list\">\n        <div class=\"item\" [ngClass]=\"{'item': true, 'selected': item.name === selected}\" *ngFor=\"let item of getFiltered()\" (click)=\"clicked(item)\">\n            {{item.name}}\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -172,12 +172,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var DrawerComponent = /** @class */ (function () {
     function DrawerComponent() {
+        this.filter = "";
         this.title = "NaN";
+        this.items = [];
         this.onClicked = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* EventEmitter */]();
     }
     DrawerComponent.prototype.clicked = function (item) {
         this.selected = item.name;
         this.onClicked.emit(item);
+    };
+    DrawerComponent.prototype.getFiltered = function () {
+        var result = [];
+        if (this.items)
+            for (var i = 0; i < this.items.length; i++)
+                if (this.items[i].name.toUpperCase().startsWith(this.filter.toUpperCase()))
+                    result.push(this.items[i]);
+        return result;
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Input */])(),
@@ -185,7 +195,7 @@ var DrawerComponent = /** @class */ (function () {
     ], DrawerComponent.prototype, "title", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Input */])(),
-        __metadata("design:type", Array)
+        __metadata("design:type", Object)
     ], DrawerComponent.prototype, "items", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["K" /* Output */])(),
