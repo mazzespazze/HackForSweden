@@ -1,0 +1,13 @@
+<div class="overlay" [ngClass]="{'hideOverlay': hide}" (click)="exit()"></div>
+
+<div class="window" [ngClass]="{'hide': hide}">
+    <div class="title">
+        {{api.name}}
+    </div>
+    <hr />
+    {{api.desc}}
+    <hr />
+    <div class="url">
+        <a href="{{api.url}}">{{api.url}}</a>
+    </div>
+</div>

@@ -1,9 +1,9 @@
-<div>
+<div class="drawer">
     <div class="title">
         {{title}}
     </div>
     
-    <div class="item" [ngClass]="{'selected': item.name === selected}" *ngFor="let item of items" (click)="clicked(item)">
+    <div class="item" [ngClass]="{'item': true, 'selected': item.name === selected}" *ngFor="let item of items" (click)="clicked(item)">
         {{item.name}}
     </div>
 </div>
