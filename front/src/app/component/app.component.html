@@ -1,0 +1,8 @@
+<div class="container">
+    <div class="row">
+        <drawer class="first col-4" title="Tags" [items]="tags" (onClicked)="tagSelect($event)"></drawer>
+        <drawer *ngIf="connected" class="second col-4" title="Reachable" [items]="connected" (onClicked)="complete($event)"></drawer>
+        <drawer *ngIf="path" class="third col-4" title="Path" [items]="path" (onClicked)="selectAPI($event)"></drawer>
+        <viewer *ngIf="selectedAPI != null" [api]="selectedAPI" (onExit)="deselectAPI($event)"></viewer>
+    </div>
+</div>

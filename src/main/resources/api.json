@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Trafiklab",
+    "url": "trafiklab.se/api",
+    "tags": [
+      "transport", "bus", "metro", "train", "traffic", "geo"
+    ],
+    "lang": "swedish",
+    "type": [
+      "csv", "xml"
+    ]
+  },
+  {
+    "name": "SLU",
+    "url": "www.slu.se/ufi",
+    "tags": [
+      "agriculture", "geo", "statistics", "forrest"
+    ]
+  },
+  {
+    "name": "Police",
+    "url": "polisen.se",
+    "tags": [
+      "geo", "accidents", "terrorism", "catastrophy"
+    ]
+  }
+]
