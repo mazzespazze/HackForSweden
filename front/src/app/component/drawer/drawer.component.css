@@ -1,0 +1,33 @@
+.drawer {
+    position: absolute;
+    background-color: #192842;
+    height: 100%;
+    -webkit-box-shadow: 5px 0 3px -2px #222;
+    box-shadow: 5px 0 3px -2px #222;
+}
+
+.title {
+    color: #AAA;
+    font-weight: 900;
+    font-size: 32px;
+    letter-spacing: 5px;
+    font-family: 'Dejavu Sans';
+    margin: 10px;
+}
+
+.item {
+    color: #AAA;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 3px;
+    font-family: 'Dejavu Sans';
+    width: 100%;
+    padding: 10px;
+    border-bottom: 2px solid white;
+    border-top: 2px solid white;
+    cursor: pointer;
+}
+
+.item:hover {
+    background-color: #1c2d49;
+}
