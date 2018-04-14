@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #121c2d;
+}
+
+html,body,.container {
+    height:100%;
+}
+.container {
+    display:table;
+    width: 100%;
+    margin-top: -50px;
+    padding: 50px 0 0 0; /*set left/right padding according to needs*/
+    box-sizing: border-box;
+}
+
+.row {
+    height: 100%;
+    display: table-row;
+}
+
+.row .no-float {
+  display: table-cell;
+  float: none;
+}
+
+.full-size {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}

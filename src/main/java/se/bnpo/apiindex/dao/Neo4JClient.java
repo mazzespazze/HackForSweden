@@ -15,9 +15,10 @@ public class Neo4JClient {
     private SessionFactory sessionFactory;
 
     public Neo4JClient() {
+        String url = System.getenv("DB_URL");
         Configuration configuration = new Configuration.Builder()
                 .verifyConnection(false)
-                .uri("bolt://localhost:7687")
+                .uri("bolt://" + (url != null ? url : "localhost") + ":7687")
                 .build();
         sessionFactory = new SessionFactory(configuration, "se.bnpo.apiindex.model");
     }

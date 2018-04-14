@@ -1,0 +1,6 @@
+<div class="container">
+    <div class="row">
+        <drawer class="full-size" title="tags" [items]="tags" (onClicked)="tagSelect"></drawer>
+        <drawer *ngIf="apis" class="full-size" title="apis" [items]="apis" (onClicked)="apiSelect"></drawer>
+    </div>
+</div>
