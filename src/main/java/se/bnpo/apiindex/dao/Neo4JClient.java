@@ -1,39 +1,44 @@
 package se.bnpo.apiindex.dao;
 
-import org.neo4j.driver.v1.*;
+import org.neo4j.ogm.config.Configuration;
+import org.neo4j.ogm.session.Session;
+import org.neo4j.ogm.session.SessionFactory;
+import se.bnpo.apiindex.model.API;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import javax.inject.Singleton;
+import java.util.Collection;
 
-import static org.neo4j.driver.v1.Values.parameters;
+@Singleton
+public class Neo4JClient {
 
-public class Neo4JClient implements AutoCloseable {
+    private SessionFactory sessionFactory;
 
-    private final Driver driver;
-
-    public Neo4JClient()
-    {
-        driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("", ""));
+    public Neo4JClient() {
+        Configuration configuration = new Configuration.Builder()
+                .verifyConnection(false)
+                .uri("bolt://localhost:7687")
+                .build();
+        sessionFactory = new SessionFactory(configuration, "se.bnpo.apiindex.model");
     }
 
-    @Override
-    public void close() {
-        driver.close();
+    public void cleanDB() {
+        getAllAPI().forEach(api -> {
+            Session session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.delete(api);
+            session.getTransaction().commit();
+        });
     }
 
-    public void addDataSet() {
-        try ( Session session = driver.session() ) {
-            List<String> tags = new ArrayList<>();
-            String tagString = tags.stream().collect(Collectors.joining());
-            StringBuilder queryBuilder = new StringBuilder("CREATE (a:").append(tagString).append(") ");
-            queryBuilder.append("SET a.api = $api");
-            queryBuilder.append("RETURN a.api + ', from node ' + id(a)");
-            session.writeTransaction(tx -> {
-                StatementResult result = tx.run(queryBuilder.toString(),
-                                                parameters( "api", "flight" ) );
-                return result.single().get( 0 ).asString();
-            });
-        }
+    public void addAPI(API api) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.save(api);
+        session.getTransaction().commit();
+    }
+
+    public Collection<API> getAllAPI() {
+        Session session = sessionFactory.openSession();
+        return session.loadAll(API.class);
     }
 }
