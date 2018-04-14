@@ -17,7 +17,7 @@ public class DatabaseService {
         return neo4JClient.getReachableTags(tag);
     }
 
-    public Collection<API> getPath(String start, String end) {
+    public Collection<Object> getPath(String start, String end) {
         return neo4JClient.getPath(start, end);
     }
 

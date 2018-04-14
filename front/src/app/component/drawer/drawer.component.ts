@@ -17,12 +17,25 @@ export class DrawerComponent {
         this.onClicked.emit(item);
     }
 
+    private joinItems(): any[] {
+        let result = [];
+        if(this.items.length > 0 && !this.items[0].url)
+            return this.items;
+        for (var i = 0; i < this.items.length-1; i++) {
+            let elem = this.items[i];
+            elem.tag = this.items[i+1].name;
+            result.push(elem);
+        }
+        return result;
+    }
+
     private getFiltered() {
         let result = [];
-        if(this.items)
-            for (var i = 0; i < this.items.length; i++) 
-                if(this.items[i].name.toUpperCase().startsWith(this.filter.toUpperCase()))
-                    result.push(this.items[i]);
+        let items = this.joinItems();
+        if(items)
+            for (var i = 0; i < items.length; i++) 
+                if(items[i].name.toUpperCase().startsWith(this.filter.toUpperCase()))
+                    result.push(items[i]);
         return result;
     }
 }

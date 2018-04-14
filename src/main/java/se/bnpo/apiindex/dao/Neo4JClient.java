@@ -45,19 +45,33 @@ public class Neo4JClient {
         return session.loadAll(Tag.class);
     }
 
-    public List<API> getPath(String startTag, String endTag) {
+    public List<Object> getPath(String startTag, String endTag) {
         Session session = sessionFactory.openSession();
         Map<String, String> param = new HashMap<>();
         param.put("start", startTag);
         param.put("end", endTag);
-        List<API> result = new ArrayList<>();
+        List<API> apis = new ArrayList<>();
+        List<Tag> tags = new ArrayList<>();
+        List<Object> result = new ArrayList<>();
         session.query(API.class, "MATCH (n:Tag {name: $start}),(m:Tag {name: $end}), \n" +
                 "p = shortestPath((n)-[*..5]-(m))\n" +
                 "WITH NODES(p) AS nds\n" +
                 "UNWIND nds AS nd\n" +
                 "WITH nd\n" +
                 "WHERE nd:api\n" +
-                "RETURN nd;", param).forEach(result::add);
+                "RETURN nd;", param).forEach(apis::add);
+        session.query(Tag.class, "MATCH (n:Tag {name: $start}),(m:Tag {name: $end}), \n" +
+                "p = shortestPath((n)-[*..5]-(m))\n" +
+                "WITH NODES(p) AS nds\n" +
+                "UNWIND nds AS nd\n" +
+                "WITH nd\n" +
+                "WHERE nd:Tag\n" +
+                "RETURN nd;", param).forEach(tags::add);
+        for(int i = 0; i < apis.size(); i++) {
+            result.add(apis.get(i));
+            if(i < tags.size())
+                result.add(tags.get(i));
+        }
         return result;
     }
 
