@@ -1,7 +1,0 @@
-se/bnpo/apiindex/rest/RestApplication.class
-se/bnpo/apiindex/service/DatabaseService.class
-se/bnpo/apiindex/model/Tag.class
-se/bnpo/apiindex/util/StartupConfig.class
-se/bnpo/apiindex/model/API.class
-se/bnpo/apiindex/rest/Indexer.class
-se/bnpo/apiindex/dao/Neo4JClient.class

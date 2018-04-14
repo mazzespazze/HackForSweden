@@ -1,7 +1,0 @@
-/home/munhunger/develop/munhunger/HackForSweden/src/main/java/se/bnpo/apiindex/rest/Indexer.java
-/home/munhunger/develop/munhunger/HackForSweden/src/main/java/se/bnpo/apiindex/util/StartupConfig.java
-/home/munhunger/develop/munhunger/HackForSweden/src/main/java/se/bnpo/apiindex/service/DatabaseService.java
-/home/munhunger/develop/munhunger/HackForSweden/src/main/java/se/bnpo/apiindex/dao/Neo4JClient.java
-/home/munhunger/develop/munhunger/HackForSweden/src/main/java/se/bnpo/apiindex/model/Tag.java
-/home/munhunger/develop/munhunger/HackForSweden/src/main/java/se/bnpo/apiindex/rest/RestApplication.java
-/home/munhunger/develop/munhunger/HackForSweden/src/main/java/se/bnpo/apiindex/model/API.java
