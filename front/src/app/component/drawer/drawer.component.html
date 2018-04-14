@@ -2,8 +2,12 @@
     <div class="title">
         {{title}}
     </div>
-    
-    <div class="item" [ngClass]="{'item': true, 'selected': item.name === selected}" *ngFor="let item of items" (click)="clicked(item)">
-        {{item.name}}
+    <div class="filter">
+        <input name="filter" placeholder="filter" [(ngModel)]="filter"/>
+    </div>
+    <div class="list">
+        <div class="item" [ngClass]="{'item': true, 'selected': item.name === selected}" *ngFor="let item of getFiltered()" (click)="clicked(item)">
+            {{item.name}}
+        </div>
     </div>
 </div>

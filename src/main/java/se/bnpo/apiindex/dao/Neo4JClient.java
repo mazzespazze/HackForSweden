@@ -52,7 +52,7 @@ public class Neo4JClient {
         param.put("end", endTag);
         List<API> result = new ArrayList<>();
         session.query(API.class, "MATCH (n:Tag {name: $start}),(m:Tag {name: $end}), \n" +
-                "p = shortestPath((n)-[*..15]-(m))\n" +
+                "p = shortestPath((n)-[*..5]-(m))\n" +
                 "WITH NODES(p) AS nds\n" +
                 "UNWIND nds AS nd\n" +
                 "WITH nd\n" +
@@ -66,7 +66,7 @@ public class Neo4JClient {
         Map<String, String> param = new HashMap<>();
         param.put("name", tagName);
         List<Tag> result = new ArrayList<>();
-        session.query(Tag.class, "MATCH (n:Tag {name: $name})-[*..15]-(m:Tag) RETURN m", param).forEach(result::add);
+        session.query(Tag.class, "MATCH (n:Tag {name: $name})-[*..5]-(m:Tag) RETURN m", param).forEach(result::add);
         return result;
     }
 
