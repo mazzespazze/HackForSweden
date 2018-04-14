@@ -1,5 +1,4 @@
 .drawer {
-    position: absolute;
     background-color: #192842;
     height: 100%;
     -webkit-box-shadow: 5px 0 3px -2px #222;
@@ -30,4 +29,8 @@
 
 .item:hover {
     background-color: #1c2d49;
+}
+
+.selected {
+    background-color: springgreen;
 }

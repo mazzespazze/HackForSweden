@@ -1,9 +1,9 @@
-<div class="col-4 no-float drawer">
+<div>
     <div class="title">
         {{title}}
     </div>
     
-    <div class="item" *ngFor="let item of items" (click)="clicked(item)">
+    <div class="item" [ngClass]="{'selected': item.name === selected}" *ngFor="let item of items" (click)="clicked(item)">
         {{item.name}}
     </div>
 </div>
