@@ -6,7 +6,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class IndexerService
 {
-    private baseURL: string = "http://cybercom:8080/apiindex-1.0/api/index";
+    private baseURL: string = "/apiindex-1.0/api/index";
     public headers: any;
 
     constructor(private http: Http)
