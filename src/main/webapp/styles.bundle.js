@@ -3,7 +3,7 @@ webpackJsonp(["styles"],{
 /***/ "./node_modules/raw-loader/index.js!./node_modules/postcss-loader/lib/index.js??embedded!./src/styles.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\nbody {\n    background-color: #121c2d;\n}\nhtml,body,.container {\n    height:100%;\n}\n@-webkit-keyframes fadein {\n    from { opacity: 0; }\n    to   { opacity: 1; }\n}\n@keyframes fadein {\n    from { opacity: 0; }\n    to   { opacity: 1; }\n}\n::-webkit-scrollbar { \n    display: none; \n}"
+module.exports = "/* You can add global styles to this file, and also import other style files */\nbody {\n    background-color: #121c2d;\n    border: 2px solid white;\n}\nhtml,body,.container {\n    height:100%;\n    overflow: hidden;\n}\n@-webkit-keyframes fadein {\n    from { opacity: 0; }\n    to   { opacity: 1; }\n}\n@keyframes fadein {\n    from { opacity: 0; }\n    to   { opacity: 1; }\n}\n/*::-webkit-scrollbar { \n    display: none; \n}*/\n#header {\n    color: #AAA;\n    width: 100%;\n    text-align: center;\n    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n    font-weight: bold;\n    font-family: 'Dejavu Sans';\n    padding: 20px 0 12px 0;\n}\n#nlp-input {\n    width: 100%;\n    margin: 12px;\n    background: transparent;\n    border: none;\n    border-bottom: 2px solid orangered;\n    color: white;\n}\n#nlp-input {\n    outline: none;\n}\n"
 
 /***/ }),
 
