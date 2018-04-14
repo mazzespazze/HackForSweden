@@ -13,6 +13,14 @@ public class DatabaseService {
     @Inject
     private Neo4JClient neo4JClient;
 
+    public Collection<Tag> getReachable(String tag) {
+        return neo4JClient.getReachableTags(tag);
+    }
+
+    public Collection<API> getPath(String start, String end) {
+        return neo4JClient.getPath(start, end);
+    }
+
     public Collection<API> getAPIsWithTag(String tag) {
         return neo4JClient.getAPIWithTag(tag);
     }

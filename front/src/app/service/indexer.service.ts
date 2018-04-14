@@ -25,6 +25,14 @@ export class IndexerService
       return this.http.get(this.baseURL + "/api/" + tag, { headers: this.headers }).map(res => res.json()).catch(this.handleError);
     }
 
+    public getReachable(tag: string): Observable<any> {
+      return this.http.get(this.baseURL + "/tag/" + tag, { headers: this.headers }).map(res => res.json()).catch(this.handleError);
+    }
+
+    public getPath(start: string, end: string): Observable<any> {
+      return this.http.get(this.baseURL + "/path/" + start + "/" + end, { headers: this.headers }).map(res => res.json()).catch(this.handleError);
+    }
+
     public getConnected(api: string): Observable<any> {
       return null;
     }

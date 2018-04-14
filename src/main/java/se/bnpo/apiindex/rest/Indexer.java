@@ -15,6 +15,20 @@ public class Indexer {
     private DatabaseService databaseService;
 
     @GET
+    @Path("/tag/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getReachable(@PathParam("id") String tag) {
+        return Response.ok(databaseService.getReachable(tag)).build();
+    }
+
+    @GET
+    @Path("/path/{start}/{end}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getPath(@PathParam("start") String start, @PathParam("end") String end) {
+        return Response.ok(databaseService.getPath(start, end)).build();
+    }
+
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/api")
     public Response getAPIList(@QueryParam("tag") String tags) {

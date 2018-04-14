@@ -45,6 +45,31 @@ public class Neo4JClient {
         return session.loadAll(Tag.class);
     }
 
+    public List<API> getPath(String startTag, String endTag) {
+        Session session = sessionFactory.openSession();
+        Map<String, String> param = new HashMap<>();
+        param.put("start", startTag);
+        param.put("end", endTag);
+        List<API> result = new ArrayList<>();
+        session.query(API.class, "MATCH (n:Tag {name: $start}),(m:Tag {name: $end}), \n" +
+                "p = shortestPath((n)-[*..15]-(m))\n" +
+                "WITH NODES(p) AS nds\n" +
+                "UNWIND nds AS nd\n" +
+                "WITH nd\n" +
+                "WHERE nd:api\n" +
+                "RETURN nd;", param).forEach(result::add);
+        return result;
+    }
+
+    public Collection<Tag> getReachableTags(String tagName) {
+        Session session = sessionFactory.openSession();
+        Map<String, String> param = new HashMap<>();
+        param.put("name", tagName);
+        List<Tag> result = new ArrayList<>();
+        session.query(Tag.class, "MATCH (n:Tag {name: $name})-[*..15]-(m:Tag) RETURN m", param).forEach(result::add);
+        return result;
+    }
+
     public Collection<API> getAPIWithTag(String tagName) {
         Session session = sessionFactory.openSession();
         Map<String, String> param = new HashMap<>();
