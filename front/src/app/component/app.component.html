@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row">
-        <drawer class="full-size" title="tags" [items]="tags" (onClicked)="tagSelect"></drawer>
-        <drawer *ngIf="apis" class="full-size" title="apis" [items]="apis" (onClicked)="apiSelect"></drawer>
+        <drawer class="first col-4" title="Tags" [items]="tags" (onClicked)="tagSelect($event)"></drawer>
+        <drawer *ngIf="connected" class="second col-4" title="Reachable" [items]="connected" (onClicked)="complete($event)"></drawer>
+        <drawer *ngIf="path" class="third col-4" title="Path" [items]="path"></drawer>
     </div>
 </div>

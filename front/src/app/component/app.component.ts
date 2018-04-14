@@ -7,13 +7,19 @@ import { IndexerService } from '../service/indexer.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  private start: string;
   private tags: string[];
-  private apis: any[];
+  private connected: any[];
+  private path: any[];
   constructor(private service: IndexerService) {
     service.getTags().subscribe(res => this.tags = res);
   }
 
-  private tagSelect() {
-
+  private tagSelect(item) {
+    this.start = item.name;
+    this.service.getReachable(item.name).subscribe(res => this.connected = res);
+  }
+  private complete(item) {
+    this.service.getPath(this.start, item.name).subscribe(res => this.path = res);
   }
 }

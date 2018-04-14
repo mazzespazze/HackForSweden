@@ -33,10 +33,6 @@ export class IndexerService
       return this.http.get(this.baseURL + "/path/" + start + "/" + end, { headers: this.headers }).map(res => res.json()).catch(this.handleError);
     }
 
-    public getConnected(api: string): Observable<any> {
-      return null;
-    }
-
     handleError(error:Response | any)
     {
         let errMsg:string;
