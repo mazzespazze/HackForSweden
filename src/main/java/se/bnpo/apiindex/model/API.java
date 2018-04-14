@@ -15,7 +15,7 @@ public class API {
     @Property(name="url")
     private String url;
 
-    @Relationship(type="Tag", direction=Relationship.OUTGOING)
+    @Relationship(type="Tag")
     private List<Tag> tags;
     @Property(name="desc")
     private String desc;
