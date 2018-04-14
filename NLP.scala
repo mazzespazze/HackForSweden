@@ -8,9 +8,9 @@ class Parser() extends JavaTokenParsers{
 	def tag = ("tags" | "tag") ^^ { a => "tag" }
 	def api = ("apis" | "api") ^^ { a => "api" }
 	def prep = "from" | "with" | "which" | "that"
-	def more = "more" ^^ { a => ">" }
-	def equal = "equal" ^^ { a => "="}
-	def less = "less" ^^ {a => "<"}
+	def more = ("more" | "bigger" | "greater" | ">") ^^ { a => ">" }
+	def equal = ("equal" | "=" | "equals") ^^ { a => "="}
+	def less = ("less" | "smaller" | "<") ^^ {a => "<"}
 	def quantifier = more | equal | less | number
 	def tagNames = "co2" | "parking"
 	def apiNames = "csn" | "polis"
@@ -33,12 +33,15 @@ class Parser() extends JavaTokenParsers{
 	}
 
 	def makeRange(s:String,i:Int): String = {
+		var tmp = i
+		if (i <= 0) tmp = 1
+		if (i > 15) tmp = 15
 		s match {
-			case ">=" => i+"..15"
-			case ">"  => (i+1)+"..15"
-			case "<=" => "1.."+i
-			case "<" => "1.."+(i-1)
-			case "=" => i.toString
+			case ">=" => tmp+"..15"
+			case ">"  => (tmp+1)+"..15"
+			case "<=" => "1.."+tmp
+			case "<" => "1.."+(tmp-1)
+			case "=" => tmp.toString
 			case _ => sys.error("Error while processing number")  
 		}
 	}
@@ -46,7 +49,8 @@ class Parser() extends JavaTokenParsers{
 
 object NLP {
 	def main(args:Array[String]){
-		var acceptedKeywords = List("tags","tag","api","apis","from","that","which","with","more","equal","less","and","or")
+		var acceptedKeywords = List("tags","tag","api","apis","from","that","which","with","more","equal","less","and","or",
+									"greater",">","<","=","bigger","smaller","equals")
 		var tags = List("co2","parking")
 		var apis = List("csn","polis")
 		val p = new Parser()
