@@ -10,6 +10,7 @@ services:
 
   backend:
     build: ./
+    image: munhunger/indexer
     ports:
       - 8085:8080
     links:
