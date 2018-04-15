@@ -16,9 +16,11 @@
 }
 
 .window {
+    border: 3px solid white;
+    border-radius: 15px;
     position: fixed;
-    width: 20%;
-    left: 40%;
+    width: 33%;
+    left: 33%;
     top: 150px;
     background-color: #182946;
     color: #DDD;
@@ -59,4 +61,12 @@
 
 .url {
     text-align: right;
+}
+
+.url > a {
+    color: white;
+}
+
+.url > a:hover, url > a:visited, url > a:active {
+    color: beige;
 }
