@@ -21,7 +21,7 @@ export class DrawerComponent {
         let result = [];
         if(this.items.length > 0 && !this.items[0].url)
             return this.items;
-        for (var i = 0; i < this.items.length-1; i++) {
+        for (var i = 0; i < this.items.length-1; i+=2) {
             let elem = this.items[i];
             elem.tag = this.items[i+1].name;
             result.push(elem);
