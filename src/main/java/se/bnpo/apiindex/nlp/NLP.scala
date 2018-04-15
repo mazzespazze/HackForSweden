@@ -1,7 +1,7 @@
 //package se.bnpo.apiindex.nlp
 
+import java.util.Base64
 import scala.util.parsing.combinator._
-import scala.io._
 
 class Parser() extends JavaTokenParsers{
 	////"tag|api|tags|apis  from|with|which   (tagNames|Apinames and*) WITH more|equal|less   number"
@@ -12,13 +12,13 @@ class Parser() extends JavaTokenParsers{
 	def equal = ("equal" | "=" | "equals") ^^ { a => "="}
 	def less = ("less" | "smaller" | "<") ^^ {a => "<"}
 	def quantifier = more | equal | less |number
-	def tagNames = "co2" | "parking"
-	def apiNames = "csn" | "polis"
+	def tagNames = "co2" | "parking" | "transport" | "forest" | "agriculture" | "accidents" | "location" | "society" | "sport"
+	def apiNames = "csn" | "polis" | "nationalhealth" | "opendataportal" | "sgu environment"
 	def names = tagNames | apiNames
-	def number: Parser[Int] = """\d+(\.\d*)?""".r ^^ { _.toInt }
+  def number: Parser[Int] = """\d+(\.\d*)?""".r ^^ { _.toInt }
 	def expr = (tag|api) ~ (prep ~> repsep(names,"and")) ~  (prep ~> rep(quantifier)) ^^ { 
 					case research ~ names ~ qnt => translator(research,names,qnt) }
-	
+
 	def translator(res: String, names:List[Any], qnt: List[Any]): String = {
 		//MATCH(n:Tag {name: $name})-[1..5List("csn","polis")]-(m:Tag) RETURN m
 		//println(res,names,qnt)
@@ -29,6 +29,7 @@ class Parser() extends JavaTokenParsers{
 		else {
 			range = makeRange(qnt(0)+qnt(1).asInstanceOf[String],qnt(2).asInstanceOf[Int])
 		}
+		println(names)
 		return "MATCH (n:Tag {name:$"+names(0)+"})-"+"["+range+"]-(res:"+res+") RETURN res"
 	}
 
@@ -51,12 +52,12 @@ object NLP {
 	def main(args:Array[String]){
 		var acceptedKeywords = List("tags","tag","api","apis","from","that","which","with","more","equal","less","and","or",
 									"greater",">","<","=","bigger","smaller","equals")
-		var tags = List("co2","parking")
-		var apis = List("csn","polis")
+    var query = Base64.getDecoder.decode(args(0)).toString
+    //var query = "I want all tags from csn and polis and co2 with depth smaller equal than 8"
+		var tags = args(1).split(",")
+		var apis = args(2).split(",")
 		val p = new Parser()
-		var s = ""
-		for(line <- Source.fromFile(args(0)).getLines()) s += "\n" + line.trim
-		var res = s.toLowerCase.split(" ").filter(x => acceptedKeywords.contains(x) || tags.contains(x) || 
+		var res = query.toLowerCase.split(" ").filter(x => acceptedKeywords.contains(x) || tags.contains(x) ||
 													apis.contains(x) || x.matches("\\d+")).mkString(" ")
 		p.parseAll(p.expr,res) match {
 			case p.Success(msg, _) => println(msg)
