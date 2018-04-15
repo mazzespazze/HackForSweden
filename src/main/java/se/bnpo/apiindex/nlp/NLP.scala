@@ -1,4 +1,4 @@
-package se.bnpo.apiindex.nlp
+//package se.bnpo.apiindex.nlp
 
 import scala.util.parsing.combinator._
 import scala.io._
